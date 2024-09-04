@@ -1,0 +1,53 @@
+<div mat-dialog-title>
+  <h1>Update  Customer</h1>
+</div>
+<form [formGroup]="custForm"   class="cust-form">
+  <div mat-dialog-content class="content">
+    <div class="row">
+
+
+      <mat-form-field appearance="outline">
+        <mat-label>ID</mat-label>
+        <input matInput type="number"    formControlName="id" >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>First name</mat-label>
+        <input matInput type="text" placeholder="Ex. Lamkadam"   formControlName="firstname">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Ex. hamza"     formControlName="lastname">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Ex. test@gmail.com"   formControlName="email" >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Date of birth</mat-label>
+        <input matInput [matDatepicker]="picker"    formControlName="dateNaissance">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-radio-group aria-label="Select an option"  formControlName="genre">
+        <mat-label><b>Gender</b></mat-label>
+        <mat-radio-button value="MALE">MALE</mat-radio-button>
+        <mat-radio-button value="FEMALE">FEMALE</mat-radio-button>
+
+      </mat-radio-group>
+    </div>
+
+
+
+  </div>
+  <div mat-dialog-actions class="action">
+<!--    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>-->
+    <button mat-raised-button color="primary" type="submit" (click)="updateCustomer(customer.id, custForm.value)">{{customer  ? 'Update': 'Update'}}</button>
+  </div>
+</form>
