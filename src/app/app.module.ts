@@ -21,9 +21,32 @@ import { ProductComponent } from './product/product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
-import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
+
 import {MatInputModule} from "@angular/material/input";
 import { FournisseurComponent } from './fournisseur/fournisseur.component';
+import { SiteComponent } from './site/site.component';
+import { OrdersComponent } from './orders/orders.component';
+import { NewOrdersComponent } from './new-orders/new-orders.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+
+import { AddCustomerComponent } from './add-customer/add-customer.component';
+import {MatDialog, MatDialogModule ,MatDialogRef} from "@angular/material/dialog";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { UpdateCustomerComponent } from './update-customer/update-customer.component';
+import {KeycloakService} from "./service/keycloak.service";
+import {KeycloakAngularModule} from "keycloak-angular";
+import { UpdateFournisseurComponent } from './update-fournisseur/update-fournisseur.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import { AddProductComponent } from './add-product/add-product.component';
+
+
+
+
+
 
 /*function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -42,6 +65,11 @@ import { FournisseurComponent } from './fournisseur/fournisseur.component';
 }*/
 
 
+export function kcFactory(kcService: KeycloakService){
+  return () => kcService.init();
+}
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +79,13 @@ import { FournisseurComponent } from './fournisseur/fournisseur.component';
     ProductComponent,
     DashboardComponent,
     FournisseurComponent,
+    SiteComponent,
+    OrdersComponent,
+    NewOrdersComponent,
+    AddCustomerComponent,
+    UpdateCustomerComponent,
+    UpdateFournisseurComponent,
+    AddProductComponent
 
 
   ],
@@ -69,17 +104,29 @@ import { FournisseurComponent } from './fournisseur/fournisseur.component';
     MatTableModule,
     MatPaginatorModule,
     KeycloakAngularModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatInputModule,
+    MatDialogModule,
+    MatRadioModule,
+    MatSnackBarModule,
+    MatGridListModule
 
   ],
-  /*providers: [
+
+
+  providers: [
     {
       provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService]
+      deps: [KeycloakService],
+      useFactory: kcFactory,
+      multi: true
+
     }
-  ],*/
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,6 +4,11 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {ProductService} from "../service/product.service";
 import {Product} from "../model/product.model";
+import {AddCustomerComponent} from "../add-customer/add-customer.component";
+import {CustomerService} from "../service/customer.service";
+import {MatDialog} from "@angular/material/dialog";
+import {Router} from "@angular/router";
+import {AddProductComponent} from "../add-product/add-product.component";
 
 @Component({
   selector: 'app-product',
@@ -17,7 +22,11 @@ export class ProductComponent implements OnInit , AfterViewInit{
   public dataSource : any;
 
   @ViewChild(MatPaginator) paginator! : MatPaginator;
-  constructor(private http:HttpClient , private  productService:ProductService) {
+  constructor(private http:HttpClient ,
+              private  productService:ProductService ,
+              private _dialog: MatDialog,
+              private route: Router) {
+
 
   }
 
@@ -65,5 +74,33 @@ export class ProductComponent implements OnInit , AfterViewInit{
   removeProductFromDataSource(productId: number): void {
     this.products = this.products.filter((product: { id: number; }) => product.id !== productId);
     this.dataSource.data = this.products; // Update the data source
+  }
+
+  openAddProductForm() {
+    const dialogRef = this._dialog.open(AddProductComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.refreshProductList();
+        }
+      },
+    });
+  }
+
+
+
+  refreshProductList() {
+    this.productService.getProducts().subscribe({
+      next: value => {
+        this.products = value;
+        this.dataSource = new MatTableDataSource(this.products);
+        this.dataSource.paginator = this.paginator;
+
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
+
   }
 }

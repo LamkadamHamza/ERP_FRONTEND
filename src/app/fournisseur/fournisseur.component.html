@@ -54,22 +54,20 @@
 
 
 
+
+
+
         <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef  style="text-align: center;"> Action </th>
-          <td mat-cell *matCellDef="let element" >
-            <button style="margin: 10px" mat-raised-button color="accent" >
-              <mat-icon>update</mat-icon>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary"  (click)="handlUpdate(element)">
+              <mat-icon>edit</mat-icon>
             </button>
-            <button style="margin: 10px" mat-raised-button color="primary" >
+            <button mat-icon-button color="warn" (click)="handleDelet(element)">
               <mat-icon>delete</mat-icon>
             </button>
           </td>
-
-
         </ng-container>
-
-
-
 
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
