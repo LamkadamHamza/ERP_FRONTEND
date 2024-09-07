@@ -28,8 +28,13 @@ export class AdminTemplateComponent implements OnInit{
     });
   }
 
-  handleLogout(){
-    this.keycloakService.logout(window.location.origin);
-  }
+  /*handleLogout() {
 
+    this.keycloakService.logout(window.location.origin);
+  }*/
+
+
+  async handleLogout() {
+    this.keycloakService.logout("http://localhost:9999");
+  }
 }

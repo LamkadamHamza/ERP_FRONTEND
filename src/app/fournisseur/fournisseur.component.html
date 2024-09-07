@@ -21,7 +21,7 @@
         </ng-container>
 
         <ng-container matColumnDef="fourncodeext">
-          <th mat-header-cell *matHeaderCellDef > fourncodeext </th>
+          <th mat-header-cell *matHeaderCellDef > Code Externe </th>
           <td mat-cell *matCellDef="let element"> {{element.fourncodeext}} </td>
         </ng-container>
 
@@ -32,7 +32,7 @@
 
         <ng-container matColumnDef="fourcre">
           <th mat-header-cell *matHeaderCellDef > Date Creation </th>
-          <td mat-cell *matCellDef="let element"> {{element.fourcre}} </td>
+          <td mat-cell *matCellDef="let element"> {{ element.fourcre | date: 'dd/MM/yyyy' }} </td>
         </ng-container>
 
         <ng-container matColumnDef="fourutil">

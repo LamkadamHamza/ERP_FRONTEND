@@ -18,7 +18,7 @@ import {Router} from "@angular/router";
 })
 export class CustomerComponent implements OnInit , AfterViewInit{
   public  customers : any;
-  public displayedColumns = ['id','First Name','Last Name','Email','genre','dateNaissance','action'];
+  public displayedColumns = ['id','First Name','Last Name','Email','genre','dateNaissance','Action'];
   public dataSource : any;
   id! : number;
 

@@ -17,7 +17,7 @@ export class KeycloakService {
     if(!this._keycloak){
      this._keycloak = new Keycloak({
        url: 'http://localhost:9999',
-       realm: 'ERP_LAMKADAM_V1',
+       realm: 'ERP_V1',
        clientId: 'ERP_client_ang_v1'
      });
     }
@@ -50,8 +50,7 @@ export class KeycloakService {
     return this._keycloak?.login();
   }
 
-  logout(){
-   return  this._keycloak?.logout({redirectUri : 'http://localhost:4200'})
-
+  logout(redirectUri: string) {
+    return this._keycloak?.logout({ redirectUri });
   }
 }

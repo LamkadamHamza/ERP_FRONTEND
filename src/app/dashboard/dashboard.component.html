@@ -40,58 +40,32 @@
 
 
 <div class="grid-container">
-  <mat-grid-list cols="2" rowHeight="60px">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title">Chiffre globale </h1>
 
-    <mat-grid-tile [colspan]="2" [rowspan]="2">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
+          <a class="btn btn-primary">120378</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title">Nombre des clients </h1>
 
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
+          <a href="#" class="btn btn-primary">200</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p-card header="chiffre d'affire pour chaque magasin" style="margin: 10px;">
 
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-  <mat-grid-list cols="2" rowHeight="60px">
+    <div class="card">
+      <p-chart type="bar" [data]="basicData" [options]="basicOptions" />
+    </div>
 
-    <mat-grid-tile [colspan]="2" [rowspan]="2">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Card Content Her</div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-  <mat-grid-list cols="2" rowHeight="350px" *ngFor="let card of cards">
-
-    <mat-grid-tile [colspan]="card.cols" [rowspan]="card.rows">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-    {{card.title}}
-    <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu" xPosition="before">
-      <button mat-menu-item>Expand</button>
-      <button mat-menu-item>Remove</button>
-    </mat-menu>
-  </mat-card-title>
-</mat-card-header>
-<mat-card-content class="dashboard-card-content">
-
-</mat-card-content>
-</mat-card>
-</mat-grid-tile>
-
-  </mat-grid-list>
+  </p-card>
 </div>
 

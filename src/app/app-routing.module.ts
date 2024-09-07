@@ -16,8 +16,11 @@ import {UpdateFournisseurComponent} from "./update-fournisseur/update-fournisseu
 
 
 const routes: Routes = [
+
+  {path:"" , redirectTo:"admin/dashboard", pathMatch: "full" },
   {path:"" , component: AdminTemplateComponent   },
   {path:"admin" , component: AdminTemplateComponent , children:[
+
       {path:"dashboard", component:DashboardComponent},
       {path:"customer", component:CustomerComponent /*, canActivate:[AuthGuard] , data :{roles :['ADMIN']}*/},
       {path:"product", component:ProductComponent /*, canActivate:[AuthGuard] , data :{roles :['ADMIN']}*/ },

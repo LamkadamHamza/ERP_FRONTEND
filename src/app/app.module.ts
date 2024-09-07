@@ -43,8 +43,9 @@ import { UpdateFournisseurComponent } from './update-fournisseur/update-fourniss
 import {MatGridListModule} from "@angular/material/grid-list";
 import { AddProductComponent } from './add-product/add-product.component';
 
-
-
+import { ButtonModule } from 'primeng/button';
+import { ChartModule } from 'primeng/chart';
+import {CardModule} from "primeng/card";
 
 
 
@@ -113,8 +114,10 @@ export function kcFactory(kcService: KeycloakService){
     MatDialogModule,
     MatRadioModule,
     MatSnackBarModule,
-    MatGridListModule
-
+    MatGridListModule,
+    ButtonModule,
+    ChartModule,
+    CardModule
   ],
 
 
